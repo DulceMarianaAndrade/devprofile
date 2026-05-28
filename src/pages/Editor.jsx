@@ -1,5 +1,6 @@
 import PersonalForm from "../components/PersonalForm";
 import SkillForm from "../components/SkillForm";
+import ProjectForm from "../components/ProjectForm";
 
 function Editor() {
   return (
@@ -8,6 +9,8 @@ function Editor() {
       <PersonalForm />
       <hr />
       <SkillForm />
+      <hr />
+      <ProjectForm />
     </div>
   );
 }

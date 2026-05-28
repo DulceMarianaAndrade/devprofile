@@ -19,7 +19,7 @@ function PersonalForm() {
 
   const [errores, setErrores] = useState({});
 
-  // Carga datos guardados al montar
+  //Carga datos guardados
   useEffect(() => {
     if (cv.personal) setForm(cv.personal);
   }, []);
@@ -30,7 +30,7 @@ function PersonalForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  // Manejo de enlaces
+  //enlaces
   const handleEnlaceChange = (id, campo, valor) => {
     setForm((prev) => ({
       ...prev,
@@ -54,7 +54,7 @@ function PersonalForm() {
     }));
   };
 
-  // Validaciones
+  //Validaciones
   const validar = () => {
     const nuevosErrores = {};
 
@@ -176,7 +176,7 @@ function PersonalForm() {
 
         <div>
             <label>Foto de perfil</label>
-            {/* Opción 1: subir archivo */}
+            {/*Opción 1:subir archivo desde la compu*/}
             <div>
                 <input
                 type="file"
@@ -194,7 +194,7 @@ function PersonalForm() {
                 />
             </div>
 
-            {/* Opción 2: URL */}
+            {/*Opción 2:URL*/}
             <div style={{ marginTop: 8 }}>
                 <small>O ingresa una URL:</small>
                 <input
@@ -207,7 +207,7 @@ function PersonalForm() {
 
             {errores.foto && <span className="error">{errores.foto}</span>}
 
-            {/* Preview */}
+            {/*Preview*/}
             {form.foto && (
                 <div style={{ marginTop: 8 }}>
                 <img
