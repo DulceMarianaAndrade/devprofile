@@ -1,0 +1,122 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 248, 242, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--beige-200);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  height: 68px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/*logo*/
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar__logo {
+  height: 36px;
+  object-fit: contain;
+}
+
+.navbar__brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+}
+
+/*links*/
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.navbar__link:hover {
+  color: var(--text-main);
+  background: var(--beige-100);
+}
+
+.navbar__link--active {
+  color: var(--beige-600) !important;
+  background: var(--beige-100);
+  font-weight: 600;
+}
+
+.navbar__link--active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--beige-500);
+  border-radius: 999px;
+}
+
+/*CTA*/
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar__cta {
+  background: var(--beige-500);
+  color: #fff !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__cta:hover {
+  background: var(--beige-600);
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
+/*modo oscuro*/
+.dark .navbar {
+  background: rgba(45, 32, 16, 0.92);
+  border-bottom-color: var(--beige-300);
+}
+
+/*Responsive design*/
+@media (max-width: 768px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__inner {
+    padding: 0 4%;
+  }
+}

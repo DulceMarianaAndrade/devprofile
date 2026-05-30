@@ -1,0 +1,39 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--beige-100);
+  border: 1.5px solid var(--beige-200);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.toggle:hover {
+  background: var(--beige-200);
+  border-color: var(--beige-300);
+}
+
+.toggle--oscuro {
+  background: var(--beige-300);
+  border-color: var(--beige-400);
+}
+
+.toggle--oscuro:hover {
+  background: var(--beige-400);
+}
+
+.toggle__icono {
+  font-size: 0.85rem;
+}
+
+.toggle__texto {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.toggle--oscuro .toggle__texto {
+  color: var(--text-main);
+}

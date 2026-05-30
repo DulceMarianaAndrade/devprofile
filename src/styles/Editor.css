@@ -1,0 +1,297 @@
+.editor {
+  display: flex;
+  min-height: calc(100vh - 68px);
+  background: var(--beige-50);
+}
+
+/* ── Sidebar ── */
+.editor__sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--white);
+  border-right: 1px solid var(--beige-200);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 68px;
+  height: calc(100vh - 68px);
+  overflow-y: auto;
+}
+
+.editor__sidebar-header {
+  padding: 32px 24px 20px;
+  border-bottom: 1px solid var(--beige-100);
+}
+
+.editor__sidebar-header h2 {
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.editor__sidebar-header p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Nav items */
+.editor__nav {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editor__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+  color: var(--text-soft);
+  position: relative;
+}
+
+.editor__nav-item:hover {
+  background: var(--beige-100);
+  color: var(--text-main);
+}
+
+.editor__nav-item--active {
+  background: var(--beige-100);
+  color: var(--beige-600) !important;
+  font-weight: 600;
+}
+
+.editor__nav-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--beige-50);
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.editor__nav-item--active .editor__nav-icono {
+  background: var(--beige-200);
+  color: var(--beige-600);
+}
+
+.editor__nav-label {
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.editor__nav-punto {
+  font-size: 0.5rem;
+  color: var(--beige-500);
+}
+
+/* ── Contenido ── */
+.editor__contenido {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.editor__contenido-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--beige-200);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Estilos globales de formularios ── */
+.editor__contenido-inner h2 {
+  font-size: 1.6rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--beige-100);
+}
+
+.editor__contenido-inner h3 {
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  margin: 24px 0 16px;
+}
+
+.editor__contenido-inner form > div {
+  margin-bottom: 18px;
+}
+
+.editor__contenido-inner label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.editor__contenido-inner input,
+.editor__contenido-inner textarea,
+.editor__contenido-inner select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--beige-200);
+  border-radius: var(--radius-sm);
+  background: var(--beige-50);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.editor__contenido-inner input:focus,
+.editor__contenido-inner textarea:focus,
+.editor__contenido-inner select:focus {
+  outline: none;
+  border-color: var(--beige-400);
+  box-shadow: 0 0 0 3px rgba(166,124,82,0.1);
+}
+
+.editor__contenido-inner small {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 4px;
+}
+
+/* Botones del formulario */
+.editor__contenido-inner button[type="submit"] {
+  background: var(--beige-500);
+  color: var(--white);
+  border: none;
+  padding: 11px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 8px;
+}
+
+.editor__contenido-inner button[type="submit"]:hover {
+  background: var(--beige-600);
+  transform: translateY(-1px);
+}
+
+.editor__contenido-inner button[type="button"] {
+  background: transparent;
+  color: var(--text-soft);
+  border: 1.5px solid var(--beige-200);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.editor__contenido-inner button[type="button"]:hover {
+  border-color: var(--beige-400);
+  color: var(--text-main);
+}
+
+/* Cards de items (habilidades, proyectos, etc) */
+.editor__contenido-inner [style*="border: 1px solid #ccc"] {
+  border: 1px solid var(--beige-200) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  background: var(--beige-50) !important;
+}
+
+/* Dark mode */
+.dark .editor__sidebar {
+  background: var(--beige-100);
+  border-right-color: var(--beige-300);
+}
+
+.dark .editor__sidebar-header {
+  border-bottom-color: var(--beige-200);
+}
+
+.dark .editor__nav-item:hover {
+  background: var(--beige-200);
+}
+
+.dark .editor__nav-item--active {
+  background: var(--beige-200);
+}
+
+.dark .editor__nav-icono {
+  background: var(--beige-200);
+}
+
+.dark .editor__nav-item--active .editor__nav-icono {
+  background: var(--beige-300);
+}
+
+.dark .editor__contenido-inner {
+  background: var(--beige-100);
+  border-color: var(--beige-300);
+}
+
+.dark .editor__contenido-inner input,
+.dark .editor__contenido-inner textarea,
+.dark .editor__contenido-inner select {
+  background: var(--beige-200);
+  border-color: var(--beige-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .editor {
+    flex-direction: column;
+  }
+
+  .editor__sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+  }
+
+  .editor__nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+  }
+
+  .editor__nav-item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .editor__nav-punto {
+    display: none;
+  }
+
+  .editor__nav-label {
+    font-size: 0.75rem;
+  }
+
+  .editor__contenido {
+    padding: 20px 16px;
+  }
+
+  .editor__contenido-inner {
+    padding: 24px 20px;
+  }
+}
