@@ -110,7 +110,7 @@ function SkillForm() {
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
-            placeholder="Ej. JavaScript"
+            placeholder="Ej. Programar en JavaScript"
           />
           {errores.nombre && <span className="error">{errores.nombre}</span>}
         </div>
@@ -143,7 +143,7 @@ function SkillForm() {
             name="descripcion"
             value={form.descripcion}
             onChange={handleChange}
-            placeholder="Breve descripción de la habilidad..."
+            placeholder="Ej. Tengo experiencia en programación con JavaScript y React..."
             rows={3}
           />
           <small>{form.descripcion.length}/200 caracteres</small>

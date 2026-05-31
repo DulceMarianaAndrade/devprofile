@@ -191,7 +191,7 @@ function ExtraInfoForm() {
               name="puesto"
               value={formExp.puesto}
               onChange={handleChangeExp}
-              placeholder="Ej. Desarrollador Frontend, Practicante"
+              placeholder="Ej. Desarrollador Backend, Full Stack, Proyecto personal ..."
             />
             {errores.puesto && <span className="error">{errores.puesto}</span>}
           </div>
@@ -202,7 +202,7 @@ function ExtraInfoForm() {
               name="institucion"
               value={formExp.institucion}
               onChange={handleChangeExp}
-              placeholder="Ej. Google, UAA, Proyecto personal"
+              placeholder="Ej. UAA, Proyecto personal ..."
             />
             {errores.institucion && <span className="error">{errores.institucion}</span>}
           </div>
@@ -213,7 +213,7 @@ function ExtraInfoForm() {
               name="periodo"
               value={formExp.periodo}
               onChange={handleChangeExp}
-              placeholder="Ej. Enero 2024 - Junio 2024"
+              placeholder="Ej. Diciembre 2024 - Marzo 2025"
             />
             {errores.periodo && <span className="error">{errores.periodo}</span>}
           </div>
@@ -224,7 +224,7 @@ function ExtraInfoForm() {
               name="descripcion"
               value={formExp.descripcion}
               onChange={handleChangeExp}
-              placeholder="Actividades realizadas..."
+              placeholder="Describir actividades realizadas..."
               rows={3}
             />
             <small>{formExp.descripcion.length}/300 caracteres</small>
@@ -237,7 +237,7 @@ function ExtraInfoForm() {
               name="tecnologias"
               value={formExp.tecnologias}
               onChange={handleChangeExp}
-              placeholder="Ej. React, Figma, Excel"
+              placeholder="Ej. React, Angular, SQL ..."
             />
           </div>
 
@@ -261,7 +261,7 @@ function ExtraInfoForm() {
               name="idioma"
               value={formIdioma.idioma}
               onChange={handleChangeIdioma}
-              placeholder="Ej. Inglés, Francés"
+              placeholder="Ej. Inglés, Español ..."
             />
             {errores.idioma && <span className="error">{errores.idioma}</span>}
           </div>
@@ -283,7 +283,7 @@ function ExtraInfoForm() {
               name="descripcion"
               value={formIdioma.descripcion}
               onChange={handleChangeIdioma}
-              placeholder="Ej. TOEFL 90pts, Cambridge B2"
+              placeholder="Ej. Cambridge B2"
             />
           </div>
 

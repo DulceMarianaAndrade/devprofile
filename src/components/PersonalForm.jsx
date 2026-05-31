@@ -100,7 +100,7 @@ function PersonalForm() {
       return;
     }
     actualizarPersonal(form);
-    alert("¡Datos personales guardados!");
+    alert("Datos guardados!");
   };
 
   return (
@@ -113,7 +113,7 @@ function PersonalForm() {
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
-            placeholder="Ej. Ana García López"
+            placeholder="Ej. Georgina Calzada Gónzalez"
             />
             {errores.nombre && <span className="error">{errores.nombre}</span>}
         </div>
@@ -135,7 +135,7 @@ function PersonalForm() {
             name="ciudad"
             value={form.ciudad}
             onChange={handleChange}
-            placeholder="Ej. Aguascalientes, México"
+            placeholder="Ej. Oaxaca, México"
             />
             {errores.ciudad && <span className="error">{errores.ciudad}</span>}
         </div>
@@ -146,7 +146,7 @@ function PersonalForm() {
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="Ej. ana@correo.com"
+            placeholder="Ej. valedul@gmail.com"
             />
             {errores.email && <span className="error">{errores.email}</span>}
         </div>
@@ -157,7 +157,7 @@ function PersonalForm() {
             name="telefono"
             value={form.telefono}
             onChange={handleChange}
-            placeholder="Ej. 449 123 4567"
+            placeholder="Ej. 449 123 45 67"
             />
         </div>
 
@@ -167,7 +167,7 @@ function PersonalForm() {
             name="descripcion"
             value={form.descripcion}
             onChange={handleChange}
-            placeholder="Breve descripción de ti y tu perfil profesional..."
+            placeholder="Descripción de ti y tu perfil profesional..."
             rows={4}
             />
             <small>{form.descripcion.length}/500 caracteres</small>

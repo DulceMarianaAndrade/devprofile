@@ -118,7 +118,7 @@ function ProjectForm() {
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
-            placeholder="Ej. Sistema de inventario"
+            placeholder="Ej. SPACESOUND"
           />
           {errores.nombre && <span className="error">{errores.nombre}</span>}
         </div>
@@ -129,7 +129,7 @@ function ProjectForm() {
             name="descripcion"
             value={form.descripcion}
             onChange={handleChange}
-            placeholder="¿De qué trata el proyecto?"
+            placeholder="Escribe de que trata el proyecto"
             rows={3}
           />
           <small>{form.descripcion.length}/300 caracteres</small>
@@ -142,7 +142,7 @@ function ProjectForm() {
             name="tecnologias"
             value={form.tecnologias}
             onChange={handleChange}
-            placeholder="Ej. React, Node.js, MySQL"
+            placeholder="Ej. Node.js, MySQL"
           />
           {errores.tecnologias && <span className="error">{errores.tecnologias}</span>}
         </div>
@@ -164,7 +164,7 @@ function ProjectForm() {
             name="deploy"
             value={form.deploy}
             onChange={handleChange}
-            placeholder="https://mi-proyecto.vercel.app"
+            placeholder="https://link.gitpages.ejemplo"
           />
           {errores.deploy && <span className="error">{errores.deploy}</span>}
         </div>

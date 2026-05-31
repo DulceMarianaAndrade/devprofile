@@ -107,7 +107,7 @@ function EducationForm() {
             name="institucion"
             value={form.institucion}
             onChange={handleChange}
-            placeholder="Ej. UAA, Coursera, Platzi"
+            placeholder="Ej. UAA, UNAM ..."
           />
           {errores.institucion && <span className="error">{errores.institucion}</span>}
         </div>
@@ -118,7 +118,7 @@ function EducationForm() {
             name="programa"
             value={form.programa}
             onChange={handleChange}
-            placeholder="Ej. Ingeniería en Sistemas, Curso de React"
+            placeholder="Ej. Ingeniería en Sistemas, Curso de React, Curso de Mendix"
           />
           {errores.programa && <span className="error">{errores.programa}</span>}
         </div>
@@ -129,7 +129,7 @@ function EducationForm() {
             name="periodo"
             value={form.periodo}
             onChange={handleChange}
-            placeholder="Ej. 2022 - 2026, Enero 2024"
+            placeholder="Ej. Enero 2024"
           />
           {errores.periodo && <span className="error">{errores.periodo}</span>}
         </div>
@@ -140,7 +140,7 @@ function EducationForm() {
             name="descripcion"
             value={form.descripcion}
             onChange={handleChange}
-            placeholder="Breve descripción opcional..."
+            placeholder="Introduzca una corta descripción (opcional)..."
             rows={3}
           />
           <small>{form.descripcion.length}/300 caracteres</small>
@@ -153,7 +153,7 @@ function EducationForm() {
             name="enlace"
             value={form.enlace}
             onChange={handleChange}
-            placeholder="https://certificado.com/mi-cert"
+            placeholder="https://nombrecertificado.com/mendix"
           />
           {errores.enlace && <span className="error">{errores.enlace}</span>}
         </div>
