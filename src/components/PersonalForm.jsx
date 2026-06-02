@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCV } from "../context/CVContext";
+import { validarPersonal } from "../utils/validations";
 
 const enlacesIniciales = [{ id: Date.now(), tipo: "GitHub", url: "" }];
 
@@ -55,46 +56,11 @@ function PersonalForm() {
   };
 
   //Validaciones
-  const validar = () => {
-    const nuevosErrores = {};
-
-    if (!form.nombre.trim())
-      nuevosErrores.nombre = "El nombre es obligatorio.";
-    else if (form.nombre.trim().length < 3)
-      nuevosErrores.nombre = "El nombre debe tener al menos 3 caracteres.";
-
-    if (!form.carrera.trim())
-      nuevosErrores.carrera = "La carrera es obligatoria.";
-
-    if (!form.ciudad.trim())
-      nuevosErrores.ciudad = "La ciudad es obligatoria.";
-
-    if (!form.email.trim())
-      nuevosErrores.email = "El correo es obligatorio.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      nuevosErrores.email = "El correo no es válido.";
-
-    if (!form.descripcion.trim())
-      nuevosErrores.descripcion = "La descripción es obligatoria.";
-    else if (form.descripcion.trim().length < 20)
-      nuevosErrores.descripcion = "La descripción debe tener al menos 20 caracteres.";
-    else if (form.descripcion.trim().length > 500)
-      nuevosErrores.descripcion = "La descripción no debe superar 500 caracteres.";
-
-    if (form.foto.trim() && !/^https?:\/\/.+/.test(form.foto))
-      nuevosErrores.foto = "La URL de la foto debe iniciar con http:// o https://";
-
-    form.enlaces.forEach((enlace) => {
-      if (enlace.url && !/^https?:\/\/.+/.test(enlace.url))
-        nuevosErrores[`enlace-${enlace.id}`] = "La URL debe iniciar con http:// o https://";
-    });
-
-    return nuevosErrores;
-  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevosErrores = validar();
+    const nuevosErrores = validarPersonal(form);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;

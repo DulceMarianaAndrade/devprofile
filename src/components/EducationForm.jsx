@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCV } from "../context/CVContext";
+import { validarEducacion } from "../utils/validations";
 
 function EducationForm() {
   const { cv, agregarEducacion, editarEducacion, eliminarEducacion } = useCV();
@@ -21,34 +22,9 @@ function EducationForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const validar = () => {
-    const nuevosErrores = {};
-
-    if (!form.institucion.trim())
-      nuevosErrores.institucion = "La institución es obligatoria.";
-    else if (form.institucion.trim().length < 3)
-      nuevosErrores.institucion = "Debe tener al menos 3 caracteres.";
-
-    if (!form.programa.trim())
-      nuevosErrores.programa = "El nombre del programa es obligatorio.";
-    else if (form.programa.trim().length < 3)
-      nuevosErrores.programa = "Debe tener al menos 3 caracteres.";
-
-    if (!form.periodo.trim())
-      nuevosErrores.periodo = "El periodo es obligatorio.";
-
-    if (form.descripcion.trim().length > 300)
-      nuevosErrores.descripcion = "Máximo 300 caracteres.";
-
-    if (form.enlace && !/^https?:\/\/.+/.test(form.enlace))
-      nuevosErrores.enlace = "La URL debe iniciar con http:// o https://";
-
-    return nuevosErrores;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevosErrores = validar();
+    const nuevosErrores = validarEducacion(form);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;

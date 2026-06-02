@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCV } from "../context/CVContext";
+import { validarProyecto } from "../utils/validations";
 
 function ProjectForm() {
   const { cv, agregarProyecto, editarProyecto, eliminarProyecto } = useCV();
@@ -21,45 +22,9 @@ function ProjectForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const validar = () => {
-    const nuevosErrores = {};
-
-    if (!form.nombre.trim())
-      nuevosErrores.nombre = "El nombre es obligatorio.";
-    else if (form.nombre.trim().length < 3)
-      nuevosErrores.nombre = "El nombre debe tener al menos 3 caracteres.";
-
-    if (!form.descripcion.trim())
-      nuevosErrores.descripcion = "La descripción es obligatoria.";
-    else if (form.descripcion.trim().length < 10)
-      nuevosErrores.descripcion = "La descripción debe tener al menos 10 caracteres.";
-    else if (form.descripcion.trim().length > 300)
-      nuevosErrores.descripcion = "Máximo 300 caracteres.";
-
-    if (!form.tecnologias.trim())
-      nuevosErrores.tecnologias = "Las tecnologías son obligatorias.";
-
-    if (form.repositorio && !/^https?:\/\/.+/.test(form.repositorio))
-      nuevosErrores.repositorio = "La URL debe iniciar con http:// o https://";
-
-    if (form.deploy && !/^https?:\/\/.+/.test(form.deploy))
-      nuevosErrores.deploy = "La URL debe iniciar con http:// o https://";
-
-    // Validar duplicados
-    const duplicado = cv.proyectos.some(
-      (p) =>
-        p.nombre.toLowerCase() === form.nombre.toLowerCase() &&
-        p.id !== editandoId
-    );
-    if (duplicado)
-      nuevosErrores.nombre = "Ya existe un proyecto con ese nombre.";
-
-    return nuevosErrores;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevosErrores = validar();
+    const nuevosErrores = validarProyecto(form, cv.proyectos, editandoId);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;

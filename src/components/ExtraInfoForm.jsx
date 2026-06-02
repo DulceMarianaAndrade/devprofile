@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCV } from "../context/CVContext";
+import { validarExperiencia, validarIdioma } from "../utils/validations";
 
 const nivelessIdioma = ["Básico", "Intermedio", "Avanzado", "Nativo"];
 
@@ -41,55 +42,9 @@ function ExtraInfoForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  //validaciones
-  const validarExp = () => {
-    const nuevosErrores = {};
-
-    if (!formExp.puesto.trim())
-      nuevosErrores.puesto = "El puesto es obligatorio.";
-    else if (formExp.puesto.trim().length < 3)
-      nuevosErrores.puesto = "Debe tener al menos 3 caracteres.";
-
-    if (!formExp.institucion.trim())
-      nuevosErrores.institucion = "La institución es obligatoria.";
-
-    if (!formExp.periodo.trim())
-      nuevosErrores.periodo = "El periodo es obligatorio.";
-
-    if (!formExp.descripcion.trim())
-      nuevosErrores.descripcion = "La descripción es obligatoria.";
-    else if (formExp.descripcion.trim().length < 10)
-      nuevosErrores.descripcion = "Debe tener al menos 10 caracteres.";
-    else if (formExp.descripcion.trim().length > 300)
-      nuevosErrores.descripcion = "Máximo 300 caracteres.";
-
-    return nuevosErrores;
-  };
-
-  const validarIdioma = () => {
-    const nuevosErrores = {};
-
-    if (!formIdioma.idioma.trim())
-      nuevosErrores.idioma = "El idioma es obligatorio.";
-
-    if (!formIdioma.nivel)
-      nuevosErrores.nivel = "Selecciona un nivel.";
-
-    //Validar los duplicados
-    const duplicado = idiomas.some(
-      (i) =>
-        i.idioma.toLowerCase() === formIdioma.idioma.toLowerCase() &&
-        i.id !== editandoId
-    );
-    if (duplicado)
-      nuevosErrores.idioma = "Ya existe ese idioma.";
-
-    return nuevosErrores;
-  };
-
   const handleSubmitExp = (e) => {
     e.preventDefault();
-    const nuevosErrores = validarExp();
+    const nuevosErrores = validarExperiencia(formExp);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;
@@ -110,7 +65,7 @@ function ExtraInfoForm() {
 
   const handleSubmitIdioma = (e) => {
     e.preventDefault();
-    const nuevosErrores = validarIdioma();
+    const nuevosErrores = validarIdioma(formIdioma, idiomas, editandoId);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;

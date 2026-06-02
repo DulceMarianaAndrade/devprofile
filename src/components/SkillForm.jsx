@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCV } from "../context/CVContext";
+import { validarHabilidad } from "../utils/validations";
 
 const categorias = [
   "Programación",
@@ -31,40 +32,9 @@ function SkillForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const validar = () => {
-    const nuevosErrores = {};
-
-    if (!form.nombre.trim())
-      nuevosErrores.nombre = "El nombre es obligatorio.";
-    else if (form.nombre.trim().length < 2)
-      nuevosErrores.nombre = "El nombre debe tener al menos 2 caracteres.";
-
-    if (!form.categoria)
-      nuevosErrores.categoria = "Selecciona una categoría.";
-
-    if (!form.nivel)
-      nuevosErrores.nivel = "Selecciona un nivel.";
-
-    if (!form.descripcion.trim())
-      nuevosErrores.descripcion = "La descripción es obligatoria.";
-    else if (form.descripcion.trim().length > 200)
-      nuevosErrores.descripcion = "Máximo 200 caracteres.";
-
-    // Validar duplicados
-    const duplicado = cv.habilidades.some(
-      (h) =>
-        h.nombre.toLowerCase() === form.nombre.toLowerCase() &&
-        h.id !== editandoId
-    );
-    if (duplicado)
-      nuevosErrores.nombre = "Ya existe una habilidad con ese nombre.";
-
-    return nuevosErrores;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevosErrores = validar();
+    const nuevosErrores = validarHabilidad(form, cv.habilidades, editandoId);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;
