@@ -125,6 +125,7 @@ function PersonalForm() {
             onChange={handleChange}
             placeholder="Ej. 449 123 45 67"
             />
+            {errores.telefono && <span className="error">{errores.telefono}</span>}
         </div>
 
         <div>

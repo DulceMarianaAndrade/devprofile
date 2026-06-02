@@ -5,6 +5,9 @@ export const esEmailValido = (email) =>
 export const esURLValida = (url) =>
   /^https?:\/\/.+/.test(url);
 
+export const esTelefonoValido = (tel) =>
+  /^\d{10}$/.test(tel.replace(/[\s\-().]/g, ""));
+
 export const tieneLongitudMinima = (texto, min) =>
   texto.trim().length >= min;
 
@@ -35,6 +38,9 @@ export const validarPersonal = (form) => {
 
   if (esCampoVacio(form.ciudad))
     errores.ciudad = "La ciudad es obligatoria.";
+
+  if (form.telefono && !esTelefonoValido(form.telefono))
+    errores.telefono = "El teléfono debe tener 10 dígitos.";
 
   if (esCampoVacio(form.email))
     errores.email = "El correo es obligatorio.";
