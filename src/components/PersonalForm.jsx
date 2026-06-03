@@ -194,34 +194,37 @@ function PersonalForm() {
             )}
         </div>
 
-        <div>
-            <label>Enlaces profesionales</label>
-            {form.enlaces.map((enlace) => (
-            <div key={enlace.id} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-                <select
+      <div>
+        <label>Enlaces profesionales</label>
+        {form.enlaces.map((enlace) => (
+          <div key={enlace.id} style={{ marginBottom: 12 }}>
+            <div style={{ display: "flex", gap: 8 }}>
+              <select
                 value={enlace.tipo}
                 onChange={(e) => handleEnlaceChange(enlace.id, "tipo", e.target.value)}
-                >
+                style={{ width: 140 }}
+              >
                 <option value="">Tipo</option>
                 <option value="GitHub">GitHub</option>
                 <option value="LinkedIn">LinkedIn</option>
                 <option value="Portafolio">Portafolio</option>
                 <option value="Otro">Otro</option>
-                </select>
-                <input
+              </select>
+              <input
                 value={enlace.url}
                 onChange={(e) => handleEnlaceChange(enlace.id, "url", e.target.value)}
                 placeholder="https://..."
                 style={{ flex: 1 }}
-                />
-                <button type="button" onClick={() => eliminarEnlace(enlace.id)}>✕</button>
-                {errores[`enlace-${enlace.id}`] && (
-                <span className="error">{errores[`enlace-${enlace.id}`]}</span>
-                )}
+              />
+              <button type="button" onClick={() => eliminarEnlace(enlace.id)}>✕</button>
             </div>
-            ))}
-            <button type="button" onClick={agregarEnlace}>+ Agregar enlace</button>
-        </div>
+            {errores[`enlace-${enlace.id}`] && (
+              <span className="error">{errores[`enlace-${enlace.id}`]}</span>
+            )}
+          </div>
+        ))}
+        <button type="button" onClick={agregarEnlace}>+ Agregar enlace</button>
+      </div>
 
         <button type="submit">Guardar datos personales</button>
     </form>

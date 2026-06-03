@@ -137,11 +137,17 @@ function SkillForm() {
           <p>Aún no hay habilidades registradas.</p>
         ) : (
           cv.habilidades.map((h) => (
-            <div key={h.id} style={{ border: "1px solid #ccc", padding: 8, marginBottom: 8 }}>
-              <strong>{h.nombre}</strong> — {h.categoria} — {h.nivel}
-              <p>{h.descripcion}</p>
-              <button onClick={() => handleEditar(h)}>Editar</button>
-              <button onClick={() => eliminarHabilidad(h.id)}>Eliminar</button>
+            <div key={h.id} className="item-card">
+              <div className="item-card__info">
+                <strong>{h.nombre}</strong>
+                <span className="item-card__tag">{h.categoria}</span>
+                <span className="item-card__tag">{h.nivel}</span>
+              </div>
+              <p className="item-card__desc">{h.descripcion}</p>
+              <div className="item-card__acciones">
+                <button className="item-card__btn-editar" onClick={() => handleEditar(h)}>Editar</button>
+                <button className="item-card__btn-eliminar" onClick={() => eliminarHabilidad(h.id)}>Eliminar</button>
+              </div>
             </div>
           ))
         )}

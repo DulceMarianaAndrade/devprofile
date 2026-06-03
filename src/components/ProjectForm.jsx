@@ -151,15 +151,27 @@ function ProjectForm() {
           <p>Aún no hay proyectos registrados.</p>
         ) : (
           cv.proyectos.map((p) => (
-            <div key={p.id} style={{ border: "1px solid #ccc", padding: 8, marginBottom: 8 }}>
-              <strong>{p.nombre}</strong>
-              <p>{p.descripcion}</p>
-              <small> {p.tecnologias}</small><br />
-              {p.repositorio && <a href={p.repositorio} target="_blank">GitHub</a>}
-              {p.deploy && <> · <a href={p.deploy} target="_blank">Deploy</a></>}
-              <div style={{ marginTop: 8 }}>
-                <button onClick={() => handleEditar(p)}>Editar</button>
-                <button onClick={() => eliminarProyecto(p.id)}>Eliminar</button>
+            <div key={p.id} className="item-card">
+              <div className="item-card__info">
+                <strong>{p.nombre}</strong>
+              </div>
+              <p className="item-card__desc">{p.descripcion}</p>
+              <div className="item-card__info" style={{ marginBottom: 10 }}>
+                <span className="item-card__tag">{p.tecnologias}</span>
+                {p.repositorio && (
+                  <a href={p.repositorio} target="_blank" className="item-card__tag">
+                    GitHub
+                  </a>
+                )}
+                {p.deploy && (
+                  <a href={p.deploy} target="_blank" className="item-card__tag">
+                    Deploy
+                  </a>
+                )}
+              </div>
+              <div className="item-card__acciones">
+                <button className="item-card__btn-editar" onClick={() => handleEditar(p)}>Editar</button>
+                <button className="item-card__btn-eliminar" onClick={() => eliminarProyecto(p.id)}>Eliminar</button>
               </div>
             </div>
           ))

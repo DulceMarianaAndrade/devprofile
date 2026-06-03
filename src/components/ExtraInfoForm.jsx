@@ -258,14 +258,21 @@ function ExtraInfoForm() {
           <p>Aún no hay experiencias registradas.</p>
         ) : (
           experiencias.map((exp) => (
-            <div key={exp.id} style={{ border: "1px solid #ccc", padding: 8, marginBottom: 8 }}>
-              <strong>{exp.puesto}</strong> — {exp.institucion}
-              <p>{exp.periodo}</p>
-              <p>{exp.descripcion}</p>
-              {exp.tecnologias && <small>🛠 {exp.tecnologias}</small>}
-              <div style={{ marginTop: 8 }}>
-                <button onClick={() => handleEditarExp(exp)}>Editar</button>
-                <button onClick={() => eliminarExperiencia(exp.id)}>Eliminar</button>
+            <div key={exp.id} className="item-card">
+              <div className="item-card__info">
+                <strong>{exp.puesto}</strong>
+                <span className="item-card__tag">{exp.institucion}</span>
+                <span className="item-card__tag">{exp.periodo}</span>
+              </div>
+              <p className="item-card__desc">{exp.descripcion}</p>
+              {exp.tecnologias && (
+                <div className="item-card__info" style={{ marginBottom: 10 }}>
+                  <span className="item-card__tag">Tecnología(s): {exp.tecnologias}</span>
+                </div>
+              )}
+              <div className="item-card__acciones">
+                <button className="item-card__btn-editar" onClick={() => handleEditarExp(exp)}>Editar</button>
+                <button className="item-card__btn-eliminar" onClick={() => eliminarExperiencia(exp.id)}>Eliminar</button>
               </div>
             </div>
           ))
@@ -279,12 +286,17 @@ function ExtraInfoForm() {
           <p>Aún no hay idiomas registrados.</p>
         ) : (
           idiomas.map((idioma) => (
-            <div key={idioma.id} style={{ border: "1px solid #ccc", padding: 8, marginBottom: 8 }}>
-              <strong>{idioma.idioma}</strong> — {idioma.nivel}
-              {idioma.descripcion && <p>{idioma.descripcion}</p>}
-              <div style={{ marginTop: 8 }}>
-                <button onClick={() => handleEditarIdioma(idioma)}>Editar</button>
-                <button onClick={() => eliminarExperiencia(idioma.id)}>Eliminar</button>
+            <div key={idioma.id} className="item-card">
+              <div className="item-card__info">
+                <strong>{idioma.idioma}</strong>
+                <span className="item-card__tag">{idioma.nivel}</span>
+              </div>
+              {idioma.descripcion && (
+                <p className="item-card__desc">{idioma.descripcion}</p>
+              )}
+              <div className="item-card__acciones">
+                <button className="item-card__btn-editar" onClick={() => handleEditarIdioma(idioma)}>Editar</button>
+                <button className="item-card__btn-eliminar" onClick={() => eliminarExperiencia(idioma.id)}>Eliminar</button>
               </div>
             </div>
           ))

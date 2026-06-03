@@ -54,8 +54,8 @@ export const validarPersonal = (form) => {
   else if (!tieneLongitudMaxima(form.descripcion, 500))
     errores.descripcion = "La descripción no debe superar 500 caracteres.";
 
-  if (form.foto.trim() && !esURLValida(form.foto))
-    errores.foto = "La URL de la foto debe iniciar con http:// o https://";
+  if (form.foto && !form.foto.startsWith("data:") && !esURLValida(form.foto))
+  errores.foto = "La URL de la foto debe iniciar con http:// o https://";
 
   form.enlaces.forEach((enlace) => {
     if (enlace.url && !esURLValida(enlace.url))
