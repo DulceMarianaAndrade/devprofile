@@ -25,3 +25,98 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans:  'Inter', system-ui, sans-serif;
 }
+
+
+/* ── Cards de items ── */
+.item-card {
+  background: var(--beige-50);
+  border: 1px solid var(--beige-200);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.item-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.item-card__info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.item-card__info strong {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.item-card__tag {
+  background: var(--beige-100);
+  color: var(--beige-600);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--beige-200);
+}
+
+.item-card__desc {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.item-card__acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.item-card__btn-editar {
+  background: var(--beige-100) !important;
+  color: var(--beige-600) !important;
+  border: 1px solid var(--beige-200) !important;
+  padding: 6px 16px !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: background 0.2s !important;
+  margin: 0 !important;
+}
+
+.item-card__btn-editar:hover {
+  background: var(--beige-200) !important;
+}
+
+.item-card__btn-eliminar {
+  background: transparent !important;
+  color: #c0392b !important;
+  border: 1px solid #e8b4b0 !important;
+  padding: 6px 16px !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: background 0.2s !important;
+  margin: 0 !important;
+}
+
+.item-card__btn-eliminar:hover {
+  background: #fdf0ef !important;
+}
+
+/* Dark mode */
+.dark .item-card {
+  background: var(--beige-200);
+  border-color: var(--beige-300);
+}
+
+.dark .item-card__btn-editar {
+  background: var(--beige-300) !important;
+  border-color: var(--beige-400) !important;
+}

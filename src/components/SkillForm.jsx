@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCV } from "../context/CVContext";
+import { validarHabilidad } from "../utils/validations";
 
 const categorias = [
   "Programación",
@@ -31,40 +32,9 @@ function SkillForm() {
     setErrores((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const validar = () => {
-    const nuevosErrores = {};
-
-    if (!form.nombre.trim())
-      nuevosErrores.nombre = "El nombre es obligatorio.";
-    else if (form.nombre.trim().length < 2)
-      nuevosErrores.nombre = "El nombre debe tener al menos 2 caracteres.";
-
-    if (!form.categoria)
-      nuevosErrores.categoria = "Selecciona una categoría.";
-
-    if (!form.nivel)
-      nuevosErrores.nivel = "Selecciona un nivel.";
-
-    if (!form.descripcion.trim())
-      nuevosErrores.descripcion = "La descripción es obligatoria.";
-    else if (form.descripcion.trim().length > 200)
-      nuevosErrores.descripcion = "Máximo 200 caracteres.";
-
-    // Validar duplicados
-    const duplicado = cv.habilidades.some(
-      (h) =>
-        h.nombre.toLowerCase() === form.nombre.toLowerCase() &&
-        h.id !== editandoId
-    );
-    if (duplicado)
-      nuevosErrores.nombre = "Ya existe una habilidad con ese nombre.";
-
-    return nuevosErrores;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevosErrores = validar();
+    const nuevosErrores = validarHabilidad(form, cv.habilidades, editandoId);
     if (Object.keys(nuevosErrores).length > 0) {
       setErrores(nuevosErrores);
       return;
@@ -167,11 +137,17 @@ function SkillForm() {
           <p>Aún no hay habilidades registradas.</p>
         ) : (
           cv.habilidades.map((h) => (
-            <div key={h.id} style={{ border: "1px solid #ccc", padding: 8, marginBottom: 8 }}>
-              <strong>{h.nombre}</strong> — {h.categoria} — {h.nivel}
-              <p>{h.descripcion}</p>
-              <button onClick={() => handleEditar(h)}>Editar</button>
-              <button onClick={() => eliminarHabilidad(h.id)}>Eliminar</button>
+            <div key={h.id} className="item-card">
+              <div className="item-card__info">
+                <strong>{h.nombre}</strong>
+                <span className="item-card__tag">{h.categoria}</span>
+                <span className="item-card__tag">{h.nivel}</span>
+              </div>
+              <p className="item-card__desc">{h.descripcion}</p>
+              <div className="item-card__acciones">
+                <button className="item-card__btn-editar" onClick={() => handleEditar(h)}>Editar</button>
+                <button className="item-card__btn-eliminar" onClick={() => eliminarHabilidad(h.id)}>Eliminar</button>
+              </div>
             </div>
           ))
         )}

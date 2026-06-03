@@ -182,7 +182,7 @@ const equipo = [
   {
     nombre: "Valeria Ramos López",
     rol: "Diseño, modo oscuro y deploy",
-    desc: "Diseño visual de la interfaz, implementación del modo oscuro, diseño responsivo y deploy en Vercel.",
+    desc: "Diseño visual de la interfaz, implementación del modo oscuro, diseño responsivo y deploy.",
   },
 ];
 
