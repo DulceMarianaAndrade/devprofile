@@ -1,22 +1,16 @@
+import { useState } from "react";
 import { useCV } from "../context/CVContext";
 import "../styles/Preview.css";
 import {
-  UserRoundPen,
-  Briefcase,
-  FolderOpen,
-  Brain,
-  GraduationCap,
-  Languages,
-  MapPin,
-  Mail,
-  Phone,
-  Wrench
+  UserRoundPen, Briefcase, FolderOpen, Brain,
+  GraduationCap, Languages, MapPin, Mail, Phone,
+  Wrench, LayoutList, Columns2
 } from "lucide-react";
 import ExportPDFButton from "../components/ExportPDFButton";
 
-
 function Preview() {
   const { cv } = useCV();
+  const [vertical, setVertical] = useState(false);
   const { personal, habilidades, proyectos, educacion, experiencia } = cv;
 
   const expItems = experiencia?.filter((e) => e.tipo === "experiencia") || [];
@@ -34,22 +28,22 @@ function Preview() {
     return (
       <div className="cvpreview__empty">
         <div className="cvpreview__empty-icon">📄</div>
-        <p>Completa tu información para ver la previsualización</p>
+        <p>Completa el formulario con tu información para ver la previsualización</p>
       </div>
     );
   }
 
   return (
-    <>
-      {/* Botón fuera del área exportable */}
-      <div className="cvpreview__export-bar">
+    <><div className="cvpreview__export-bar">
         <ExportPDFButton />
+        <button className="export-pdf-btn" onClick={() => setVertical((v) => !v)}>
+          {vertical
+            ? <><LayoutList size={16} className="export-pdf-btn__icon" /> Dos columnas</>
+            : <><LayoutList size={16} className="export-pdf-btn__icon" /> Una columna</>
+          }
+        </button>
       </div>
-
-      {/* Todo lo de adentro se exporta al PDF */}
-      <div className="cvpreview" id="cv-preview-export">
-
-        {/* Cabecera / Datos personales */}
+      <div className={`cvpreview${vertical ? " cvpreview--vertical" : ""}`} id="cv-preview-export">
         {personal?.nombre && (
           <header className="cvpreview__header">
             <div className="cvpreview__header-left">
