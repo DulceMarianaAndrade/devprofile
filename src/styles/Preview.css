@@ -6,6 +6,7 @@
   box-shadow: var(--shadow-sm);
   font-size: 0.95rem; 
   color: var(--text-main);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .cvpreview__empty {
@@ -506,3 +507,52 @@
   font-size: 1rem;
 }
  
+.cvpreview__export-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-top: 24px;
+}
+
+.cvpreview__export-bar .export-pdf-btn {
+  margin-bottom: 0;
+}
+
+.cvpreview--vertical .cvpreview__body {
+  grid-template-columns: minmax(0, 680px);
+  justify-content: center;
+}
+
+.cvpreview--vertical .cvpreview__col-left {
+  border-right: none;
+  border-bottom: 1px solid var(--beige-100);
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cvpreview--vertical .cvpreview__col-right {
+  background: var(--white);
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cvpreview--vertical .cvpreview__header-left {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cvpreview--vertical .cvpreview__contacto {
+  justify-content: center;
+}
+
+.cvpreview--vertical .cvpreview__enlaces {
+  justify-content: center;
+}
+
+.cvpreview__wrapper {
+  padding: 0 32px 32px 32px;
+}
