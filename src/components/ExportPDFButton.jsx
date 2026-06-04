@@ -14,7 +14,7 @@ function ExportPDFButton() {
     const nombre = cv.personal?.nombre?.replace(/\s+/g, "_") || "CV";
 
     const opciones = {
-      margin: [10, 10, 10, 10],
+      margin: [8, 8, 8, 8],
       filename: `${nombre}_CV.pdf`,
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: {
@@ -22,13 +22,14 @@ function ExportPDFButton() {
         useCORS: true,
         allowTaint: true,
         logging: false,
+        windowWidth: 900,
       },
       jsPDF: {
         unit: "mm",
         format: "a4",
         orientation: "portrait",
       },
-      pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+      pagebreak: { mode: ["css", "legacy"] },
     };
 
     html2pdf().set(opciones).from(elemento).save();
@@ -36,8 +37,8 @@ function ExportPDFButton() {
 
   return (
     <button className="export-pdf-btn" onClick={handleExport}>
-      <span>⬇</span>
-      Exportar CV en PDF
+      <span>
+      Exportar</span>
     </button>
   );
 }
