@@ -34,7 +34,10 @@ function Preview() {
   }
 
   return (
-    <><div className="cvpreview__export-bar">
+     <div className="cvpreview__wrapper">
+    <>
+      {/* Botón fuera del área exportable */}
+      <div className="cvpreview__export-bar">
         <ExportPDFButton />
         <button className="export-pdf-btn" onClick={() => setVertical((v) => !v)}>
           {vertical
@@ -43,7 +46,11 @@ function Preview() {
           }
         </button>
       </div>
+
+      {/* Todo lo de adentro se exporta al PDF */}
       <div className={`cvpreview${vertical ? " cvpreview--vertical" : ""}`} id="cv-preview-export">
+
+        {/* Cabecera / Datos personales */}
         {personal?.nombre && (
           <header className="cvpreview__header">
             <div className="cvpreview__header-left">
@@ -283,6 +290,7 @@ function Preview() {
         </div>
       </div>
     </>
+    </div>
   );
 }
 
