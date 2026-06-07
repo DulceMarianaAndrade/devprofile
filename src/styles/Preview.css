@@ -4,9 +4,9 @@
   border: 1px solid var(--beige-200);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  font-size: 0.95rem; 
+  font-size: 0.95rem;
   color: var(--text-main);
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .cvpreview__empty {
@@ -24,53 +24,90 @@
   font-size: 0.95rem;
 }
 
+/* ── HEADER ── */
 .cvpreview__header {
   background: linear-gradient(135deg, var(--beige-500), var(--beige-600));
-  padding: 32px 36px;
+  padding: 24px 36px;
   color: var(--white);
+  display: flex;
+  justify-content: center;
 }
 
 .cvpreview__header-left {
   display: flex;
-  align-items: flex-start;
-  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
 .cvpreview__foto {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px; 
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
 }
 
+.cvpreview__foto-wrapper {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.cvpreview__foto {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
 .cvpreview__header-info {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .cvpreview__nombre {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 4px;
   line-height: 1.2;
+  text-align: center;
 }
 
 .cvpreview__carrera {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   opacity: 0.9;
   margin-bottom: 12px;
   color: var(--white);
+  text-align: center;
 }
 
 .cvpreview__contacto {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px 16px;
   font-size: 0.9rem;
   opacity: 0.88;
   margin-bottom: 12px;
+  justify-content: center;
 }
 
 .cvpreview__contacto span {
@@ -83,6 +120,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: center;
 }
 
 .cvpreview__enlace-tag {
@@ -101,6 +139,7 @@
   background: rgba(255, 255, 255, 0.35);
 }
 
+/* ── BODY ── */
 .cvpreview__body {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -108,7 +147,7 @@
 }
 
 .cvpreview__col-left {
-  padding: 24px 28px; 
+  padding: 24px 28px;
   border-right: 1px solid var(--beige-100);
 }
 
@@ -117,8 +156,9 @@
   background: var(--beige-50);
 }
 
+/* ── SECCIONES ── */
 .cvpreview__section {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .cvpreview__section:last-child {
@@ -149,6 +189,7 @@
   font-size: 0.88rem;
 }
 
+/* ── TIMELINE ── */
 .cvpreview__timeline {
   display: flex;
   flex-direction: column;
@@ -234,6 +275,7 @@
   color: var(--text-muted);
 }
 
+/* ── PROYECTOS ── */
 .cvpreview__proyecto {
   border: 1px solid var(--beige-200);
   border-radius: var(--radius-sm);
@@ -298,6 +340,7 @@
   border-radius: 999px;
 }
 
+/* ── HABILIDADES ── */
 .cvpreview__skill-group {
   margin-bottom: 16px;
 }
@@ -347,6 +390,7 @@
   transition: width 0.4s ease;
 }
 
+/* ── EDUCACIÓN ── */
 .cvpreview__edu-item {
   margin-bottom: 14px;
   padding-bottom: 14px;
@@ -390,6 +434,7 @@
   color: var(--beige-600);
 }
 
+/* ── IDIOMAS ── */
 .cvpreview__idioma-item {
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -408,6 +453,7 @@
   margin-top: 2px;
 }
 
+/* ── DARK MODE ── */
 .dark .cvpreview {
   background: var(--beige-100);
   border-color: var(--beige-300);
@@ -442,6 +488,7 @@
   background: var(--beige-300);
 }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .cvpreview__body {
     grid-template-columns: 1fr;
@@ -461,27 +508,33 @@
     padding: 24px 20px;
   }
 
-  .cvpreview__header-left {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .cvpreview__contacto {
-    justify-content: center;
-  }
-
-  .cvpreview__enlaces {
-    justify-content: center;
-  }
-
   .cvpreview__exp-header {
     flex-direction: column;
     gap: 2px;
   }
 }
 
+/* ── MODO VERTICAL ── */
+.cvpreview--vertical .cvpreview__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.cvpreview--vertical .cvpreview__col-left,
+.cvpreview--vertical .cvpreview__col-right {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  min-height: unset;
+}
+
+.cvpreview--vertical .cvpreview__col-right {
+  background: var(--white);
+  border-top: 1px solid var(--beige-100);
+}
+
+/* ── BOTONES Y BARRA DE EXPORT ── */
 .export-pdf-btn {
   display: inline-flex;
   align-items: center;
@@ -495,62 +548,23 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
-  margin-bottom: 20px;
 }
- 
+
 .export-pdf-btn:hover {
   background: var(--beige-600);
   transform: translateY(-1px);
 }
- 
+
 .export-pdf-btn__icon {
   font-size: 1rem;
 }
- 
+
 .cvpreview__export-bar {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-bottom: 20px;
   padding-top: 24px;
-}
-
-.cvpreview__export-bar .export-pdf-btn {
-  margin-bottom: 0;
-}
-
-.cvpreview--vertical .cvpreview__body {
-  grid-template-columns: minmax(0, 680px);
-  justify-content: center;
-}
-
-.cvpreview--vertical .cvpreview__col-left {
-  border-right: none;
-  border-bottom: 1px solid var(--beige-100);
-  max-width: 680px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.cvpreview--vertical .cvpreview__col-right {
-  background: var(--white);
-  max-width: 680px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.cvpreview--vertical .cvpreview__header-left {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.cvpreview--vertical .cvpreview__contacto {
-  justify-content: center;
-}
-
-.cvpreview--vertical .cvpreview__enlaces {
-  justify-content: center;
 }
 
 .cvpreview__wrapper {

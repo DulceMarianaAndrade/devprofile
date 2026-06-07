@@ -36,7 +36,6 @@ function Preview() {
   return (
      <div className="cvpreview__wrapper">
     <>
-      {/* Botón fuera del área exportable */}
       <div className="cvpreview__export-bar">
         <ExportPDFButton />
         <button className="export-pdf-btn" onClick={() => setVertical((v) => !v)}>
@@ -47,20 +46,19 @@ function Preview() {
         </button>
       </div>
 
-      {/* Todo lo de adentro se exporta al PDF */}
       <div className={`cvpreview${vertical ? " cvpreview--vertical" : ""}`} id="cv-preview-export">
+       
+<div className={`cvpreview__header-left${vertical ? " cvpreview__header-left--vertical" : ""}`}></div>
 
-        {/* Cabecera / Datos personales */}
         {personal?.nombre && (
           <header className="cvpreview__header">
             <div className="cvpreview__header-left">
-              {personal.foto && (
-                <img
-                  src={personal.foto}
-                  alt="Foto de perfil"
-                  className="cvpreview__foto"
-                  onError={(e) => (e.target.style.display = "none")}
-                />
+               {personal.foto && (
+                  <div
+                    className="cvpreview__foto"
+                    style={{ backgroundImage: `url(${personal.foto})` }}
+                  />
+                
               )}
               <div className="cvpreview__header-info">
                 <h1 className="cvpreview__nombre">{personal.nombre}</h1>

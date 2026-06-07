@@ -17,6 +17,12 @@
   }
 }
 
+.seccion-cv,
+.item-cv {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
 .hero {
   position: relative;
 

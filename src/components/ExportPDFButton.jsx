@@ -13,6 +13,8 @@ function ExportPDFButton() {
     const html2pdf = (await import("html2pdf.js")).default;
     const nombre = cv.personal?.nombre?.replace(/\s+/g, "_") || "CV";
 
+   const alturaEnMm = (elemento.scrollHeight * 25.4) / 96 + 15;
+
     const opciones = {
       margin: [8, 8, 8, 8],
       filename: `${nombre}_CV.pdf`,
@@ -22,14 +24,14 @@ function ExportPDFButton() {
         useCORS: true,
         allowTaint: true,
         logging: false,
-        windowWidth: 900,
+        windowWidth: 1200,
+        imageTimeout: 0
       },
       jsPDF: {
         unit: "mm",
-        format: "a4",
+        format: [210, alturaEnMm + 16],
         orientation: "portrait",
       },
-      pagebreak: { mode: ["css", "legacy"] },
     };
 
     html2pdf().set(opciones).from(elemento).save();
@@ -37,8 +39,7 @@ function ExportPDFButton() {
 
   return (
     <button className="export-pdf-btn" onClick={handleExport}>
-      <span>
-      Exportar</span>
+      <span>Exportar</span>
     </button>
   );
 }
