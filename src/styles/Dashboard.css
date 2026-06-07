@@ -1,4 +1,4 @@
-.dashboard {
+DASHBOARD.CSS .dashboard {
   padding: 24px;
 }
 
@@ -116,4 +116,36 @@
   .dashboard__grid {
     grid-template-columns: 1fr;
   }
+}
+
+.dashboard__panel--full {
+  margin-top: 24px;
+}
+
+.dashboard__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.dashboard__tabla th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--beige-500);
+  padding: 0 8px 10px 0;
+  border-bottom: 1px solid var(--beige-100);
+}
+
+.dashboard__tabla td {
+  padding: 10px 8px 10px 0;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--beige-50);
+  vertical-align: middle;
+}
+
+.dashboard__tabla tr:last-child td {
+  border-bottom: none;
 }
