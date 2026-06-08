@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCV } from "../context/CVContext";
 import { validarPersonal } from "../utils/validations";
+import Swal from 'sweetalert2';
 
 const enlacesIniciales = [{ id: Date.now(), tipo: "GitHub", url: "" }];
 
@@ -66,7 +67,12 @@ function PersonalForm() {
       return;
     }
     actualizarPersonal(form);
-    alert("Datos guardados!");
+    Swal.fire({
+      title: '¡Éxito!',
+      text: 'Datos guardados!',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
   };
 
   return (
@@ -143,7 +149,7 @@ function PersonalForm() {
 
         <div>
             <label>Foto de perfil</label>
-            {/*Opción 1:subir archivo desde la compu*/}
+            {/Opción 1:subir archivo desde la compu/}
             <div>
                 <input
                 type="file"
@@ -161,7 +167,7 @@ function PersonalForm() {
                 />
             </div>
 
-            {/*Opción 2:URL*/}
+            {/Opción 2:URL/}
             <div style={{ marginTop: 8 }}>
                 <small>O ingresa una URL:</small>
                 <input
@@ -174,7 +180,7 @@ function PersonalForm() {
 
             {errores.foto && <span className="error">{errores.foto}</span>}
 
-            {/*Preview*/}
+            {/Preview/}
             {form.foto && (
                 <div style={{ marginTop: 8 }}>
                 <img
@@ -218,8 +224,8 @@ function PersonalForm() {
               />
               <button type="button" onClick={() => eliminarEnlace(enlace.id)}>✕</button>
             </div>
-            {errores[`enlace-${enlace.id}`] && (
-              <span className="error">{errores[`enlace-${enlace.id}`]}</span>
+            {errores[enlace-${enlace.id}] && (
+              <span className="error">{errores[enlace-${enlace.id}]}</span>
             )}
           </div>
         ))}
