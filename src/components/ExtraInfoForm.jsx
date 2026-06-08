@@ -238,7 +238,7 @@ function ExtraInfoForm() {
               name="descripcion"
               value={formIdioma.descripcion}
               onChange={handleChangeIdioma}
-              placeholder="Ej. Cambridge B2"
+              placeholder="Ej. Conocimientos básicos del idioma"
             />
           </div>
 

@@ -25,7 +25,7 @@ function Footer() {
           <span>Tecnologías Web</span>
           <span>React + Vite</span>
           <span>react-router-dom</span>
-          <span>Recharts</span>
+          <span>Charts.js</span>
         </div>
 
       </div>

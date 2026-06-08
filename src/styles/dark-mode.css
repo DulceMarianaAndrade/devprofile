@@ -148,3 +148,17 @@ label {
 .dark .error {
   color: #e74c3c;
 }
+
+.dark .footer {
+  background: rgba(29, 18, 8, 0.95);
+  border-bottom-color: var(--beige-200);
+  color: var(--text-soft);
+}
+
+.dark .footer_brand p {
+  color: var(--beige-600);
+}
+
+.dark .footer__links h4{
+  color: var(--text-soft);
+}

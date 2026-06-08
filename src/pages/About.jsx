@@ -36,9 +36,8 @@ function About() {
           <h2>¿Qué es DevProfile?</h2>
           <p>
             DevProfile es el proyecto final de la materia <strong>Tecnologías Web</strong>,
-            desarrollado bajo la guía del <strong>Ing. Irving Cardona</strong>. Su propósito
-            es demostrar el dominio de React mediante una aplicación funcional, dinámica
-            y con diseño profesional.
+            su propósito es demostrar el dominio de React mediante una aplicación funcional, 
+            dinámica y con diseño profesional.
           </p>
           <p>
             La aplicación permite a cualquier usuario registrar su información profesional
@@ -122,24 +121,19 @@ const tecnologias = [
     desc: "Biblioteca principal para construir la interfaz de usuario con componentes reutilizables.",
   },
   {
-    icon: Layers,
-    nombre: "React Router DOM",
-    desc: "Manejo de rutas y navegación entre las distintas vistas de la aplicación.",
-  },
-  {
     icon: FileDown,
-    nombre: "jsPDF / react-pdf",
+    nombre: "jsPDF",
     desc: "Generación y exportación del CV en formato PDF profesional.",
   },
   {
     icon: BarChart2,
-    nombre: "Recharts",
+    nombre: "Charts.js",
     desc: "Gráfica dinámica para visualizar habilidades por nivel y categoría.",
   },
   {
     icon: Moon,
     nombre: "CSS Variables",
-    desc: "Sistema de diseño con variables CSS para modo oscuro y tema beige consistente.",
+    desc: "Sistema de diseño con variables CSS para modo oscuro.",
   },
   {
     icon: ShieldCheck,
@@ -156,7 +150,7 @@ const funcionalidades = [
   "Sección de experiencia e idiomas.",
   "Previsualización web dinámica del CV en tiempo real.",
   "Exportación del CV a PDF con diseño profesional.",
-  "Gráfica interactiva de habilidades con Recharts.",
+  "Gráfica interactiva de habilidades.",
   "Modo oscuro funcional y persistente.",
   "Validaciones completas en todos los formularios.",
   "Persistencia de datos con LocalStorage.",
@@ -177,12 +171,12 @@ const equipo = [
   {
     nombre: "Georgina Guadalupe Calzada González",
     rol: "Dashboard y gráfica de habilidades",
-    desc: "Página Dashboard, gráfica interactiva de habilidades con Recharts y visualización de datos del usuario.",
+    desc: "Página Dashboard, gráfica interactiva de habilidades con Charts.js y visualización de datos del usuario.",
   },
   {
     nombre: "Valeria Ramos López",
-    rol: "Diseño, modo oscuro y deploy",
-    desc: "Diseño visual de la interfaz, implementación del modo oscuro, diseño responsivo y deploy.",
+    rol: "Diseño y modo oscuro",
+    desc: "Diseño visual de la interfaz, implementación del modo oscuro, además del diseño responsivo.",
   },
 ];
 
