@@ -71,15 +71,7 @@ const educacionOrdenada = [...(educacion || [])].sort(
 
   return (
   <div className="cvpreview__wrapper">
-    <div className="cvpreview__export-bar">
-      <ExportPDFButton />
-      <button className="export-pdf-btn" onClick={() => setVertical((v) => !v)}>
-        {vertical
-          ? <><LayoutList size={16} className="export-pdf-btn__icon" /> Dos columnas</>
-          : <><LayoutList size={16} className="export-pdf-btn__icon" /> Una columna</>
-        }
-      </button>
-    </div>
+    <h2 className="tituloPrev">Previsualización del CV</h2>
 
     <div className={`cvpreview${vertical ? " cvpreview--vertical" : ""}`} id="cv-preview-export">
 
@@ -290,6 +282,15 @@ const educacionOrdenada = [...(educacion || [])].sort(
           )}
         </div>
       </div>
+    </div>
+     <div className="cvpreview__export-bar">
+      <ExportPDFButton />
+      <button className="export-pdf-btn" onClick={() => setVertical((v) => !v)}>
+        {vertical
+          ? <><LayoutList size={16} className="export-pdf-btn__icon" /> Dos columnas</>
+          : <><LayoutList size={16} className="export-pdf-btn__icon" /> Una columna</>
+        }
+      </button>
     </div>
   </div>
 );

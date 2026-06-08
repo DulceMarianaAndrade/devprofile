@@ -1,5 +1,10 @@
-DASHBOARD.CSS .dashboard {
+.dashboard {
   padding: 24px;
+background: var(--beige-200);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--beige-200);
+  overflow: hidden;
+  box-shadow: var(--beige-200);
 }
 
 .dashboard__grid {

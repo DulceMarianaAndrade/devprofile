@@ -9,6 +9,15 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.tituloPrev {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--beige-500);
+  margin: 16px;
+}
+
 .cvpreview__empty {
   text-align: center;
   padding: 80px 24px;
