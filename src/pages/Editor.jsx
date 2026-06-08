@@ -4,8 +4,9 @@ import SkillForm from "../components/SkillForm";
 import ProjectForm from "../components/ProjectForm";
 import EducationForm from "../components/EducationForm";
 import ExtraInfoForm from "../components/ExtraInfoForm";
-import { User, Zap, FolderOpen, GraduationCap, Globe } from "lucide-react";
+import { User, Zap, FolderOpen, GraduationCap, Globe, Trash2 } from "lucide-react";
 import "../styles/Editor.css";
+import Swal from "sweetalert2";
 
 const secciones = [
   { id: "personal", label: "Datos personales", icono: User },
@@ -15,8 +16,47 @@ const secciones = [
   { id: "extra", label: "Experiencia e Idiomas", icono: Globe },
 ];
 
+// Mantenido por consistencia estructural, puedes removerlo si no segmentarás el borrado
+const STORAGE_KEYS = [
+  "personal",
+  "habilidades",
+  "proyectos",
+  "educacion",
+  "extra",
+];
+
 function Editor() {
   const [seccionActiva, setSeccionActiva] = useState("personal");
+
+  const handleLimpiar = () => {
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Se borrará toda la información ingresada y comenzarás desde cero.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e74c3c",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, borrar todo",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Elimina todo el localStorage para limpiar completamente la app
+        localStorage.clear();
+
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: "Tu información ha sido borrada. Puedes comenzar desde cero.",
+          icon: "success",
+          confirmButtonColor: "#2ecc71",
+          confirmButtonText: "Entendido",
+        }).then(() => {
+          setSeccionActiva("");
+          setTimeout(() => setSeccionActiva("personal"), 0);
+          window.location.reload(); // Recarga la app para limpiar el estado en memoria
+        });
+      }
+    });
+  };
 
   const renderFormulario = () => {
     switch (seccionActiva) {
@@ -31,8 +71,6 @@ function Editor() {
 
   return (
     <div className="editor">
-
-      {/*Sidebar*/}
       <aside className="editor__sidebar">
         <div className="editor__sidebar-header">
           <h2>Mi CV</h2>
@@ -55,9 +93,15 @@ function Editor() {
             </button>
           ))}
         </nav>
+
+        <div className="editor__sidebar-footer">
+          <button className="editor__btn-limpiar" onClick={handleLimpiar}>
+            <Trash2 size={16} strokeWidth={1.5} />
+            <span>Comenzar de nuevo</span>
+          </button>
+        </div>
       </aside>
 
-      {/* Contenido */}
       <main className="editor__contenido">
         <div className="editor__contenido-inner">
           {renderFormulario()}
