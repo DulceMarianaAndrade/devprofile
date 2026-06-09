@@ -171,6 +171,16 @@ const educacionOrdenada = [...(educacion || [])].sort(
               </h2>
               {proyectos.map((p) => (
                 <div key={p.id} className="cvpreview__proyecto">
+                  
+                  {p.imagen && (
+                    <img
+                      src={p.imagen}
+                      alt={p.nombre}
+                      className="cvpreview__proyecto-img"
+                      onError={(e) => (e.target.style.display = "none")}
+                    />
+                  )}
+
                   <div className="cvpreview__proyecto-header">
                     <strong>{p.nombre}</strong>
                     <div className="cvpreview__proyecto-links">

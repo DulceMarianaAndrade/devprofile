@@ -18,6 +18,15 @@
   margin: 16px;
 }
 
+.cvpreview__proyecto-img {
+  display: block;
+  margin: 0 auto 8px auto;
+  width: 50%;
+  max-height: 50%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
 .cvpreview__empty {
   text-align: center;
   padding: 80px 24px;
