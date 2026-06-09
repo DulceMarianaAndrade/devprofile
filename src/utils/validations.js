@@ -24,7 +24,7 @@ export const existeDuplicado = (lista, campo, valor, idExcluir = null) =>
       item.id !== idExcluir
   );
 
-//Validación de datos personales
+// Validación de datos personales
 export const validarPersonal = (form) => {
   const errores = {};
 
@@ -39,6 +39,7 @@ export const validarPersonal = (form) => {
   if (esCampoVacio(form.ciudad))
     errores.ciudad = "La ciudad es obligatoria.";
 
+  // Teléfono opcional pero si se llena debe tener 10 dígitos
   if (form.telefono && !esTelefonoValido(form.telefono))
     errores.telefono = "El teléfono debe tener 10 dígitos.";
 
@@ -54,8 +55,10 @@ export const validarPersonal = (form) => {
   else if (!tieneLongitudMaxima(form.descripcion, 500))
     errores.descripcion = "La descripción no debe superar 500 caracteres.";
 
-  if (form.foto && !form.foto.startsWith("data:") && !esURLValida(form.foto))
-  errores.foto = "La URL de la foto debe iniciar con http:// o https://";
+  if (!form.foto)
+    errores.foto = "La foto de perfil es obligatoria.";
+  else if (!form.foto.startsWith("data:") && !esURLValida(form.foto))
+    errores.foto = "La URL de la foto debe iniciar con http:// o https://";
 
   form.enlaces.forEach((enlace) => {
     if (enlace.url && !esURLValida(enlace.url))
@@ -65,7 +68,7 @@ export const validarPersonal = (form) => {
   return errores;
 };
 
-//Validación habilidades
+// Validación habilidades
 export const validarHabilidad = (form, habilidades, editandoId) => {
   const errores = {};
 
@@ -91,7 +94,7 @@ export const validarHabilidad = (form, habilidades, editandoId) => {
   return errores;
 };
 
-//Validación de proyectos
+// Validación de proyectos
 export const validarProyecto = (form, proyectos, editandoId) => {
   const errores = {};
 
@@ -122,7 +125,7 @@ export const validarProyecto = (form, proyectos, editandoId) => {
   return errores;
 };
 
-//Validación educación
+// Validación educación
 export const validarEducacion = (form) => {
   const errores = {};
 
@@ -139,7 +142,9 @@ export const validarEducacion = (form) => {
   if (esCampoVacio(form.periodo))
     errores.periodo = "El periodo es obligatorio.";
 
-  if (!tieneLongitudMaxima(form.descripcion, 300))
+  if (esCampoVacio(form.descripcion))
+    errores.descripcion = "La descripción es obligatoria.";
+  else if (!tieneLongitudMaxima(form.descripcion, 300))
     errores.descripcion = "Máximo 300 caracteres.";
 
   if (form.enlace && !esURLValida(form.enlace))
@@ -148,7 +153,7 @@ export const validarEducacion = (form) => {
   return errores;
 };
 
-//Validación experiencia
+// Validación experiencia
 export const validarExperiencia = (form) => {
   const errores = {};
 
@@ -170,10 +175,14 @@ export const validarExperiencia = (form) => {
   else if (!tieneLongitudMaxima(form.descripcion, 300))
     errores.descripcion = "Máximo 300 caracteres.";
 
+  // Tecnologías obligatorias en experiencia
+  if (esCampoVacio(form.tecnologias))
+    errores.tecnologias = "Las tecnologías son obligatorias.";
+
   return errores;
 };
 
-//Validación idiomas
+// Validación idiomas
 export const validarIdioma = (form, idiomas, editandoId) => {
   const errores = {};
 

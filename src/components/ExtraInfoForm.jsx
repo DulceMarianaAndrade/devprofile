@@ -194,6 +194,7 @@ function ExtraInfoForm() {
               onChange={handleChangeExp}
               placeholder="Ej. React, Angular, SQL ..."
             />
+            {errores.tecnologias && <span className="error">{errores.tecnologias}</span>}
           </div>
 
           <button type="submit">

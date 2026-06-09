@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 const CVContext = createContext();
 export const useCV = () => useContext(CVContext);
 
@@ -20,15 +22,7 @@ const initialState = {
 };
 
 export const CVProvider = ({ children }) => {
-  const [cv, setCV] = useState(() => {
-    const guardado = localStorage.getItem("devprofile-cv");
-    return guardado ? JSON.parse(guardado) : initialState;
-  });
-
-  //se guarda en automatico cuando cambia de estado
-  useEffect(() => {
-    localStorage.setItem("devprofile-cv", JSON.stringify(cv));
-  }, [cv]);
+  const [cv, setCV] = useLocalStorage("devprofile-cv", initialState);
 
   const actualizarPersonal = (datos) =>
     setCV((prev) => ({ ...prev, personal: datos }));
