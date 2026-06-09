@@ -11,6 +11,7 @@ function ProjectForm() {
     tecnologias: "",
     repositorio: "",
     deploy: "",
+    imagen: "",
   });
 
   const [errores, setErrores] = useState({});
@@ -43,6 +44,7 @@ function ProjectForm() {
       tecnologias: "",
       repositorio: "",
       deploy: "",
+      imagen: "",
     });
     setErrores({});
   };
@@ -54,6 +56,7 @@ function ProjectForm() {
       tecnologias: proyecto.tecnologias,
       repositorio: proyecto.repositorio || "",
       deploy: proyecto.deploy || "",
+      imagen: proyecto.imagen || "",
     });
     setEditandoId(proyecto.id);
   };
@@ -65,6 +68,7 @@ function ProjectForm() {
       tecnologias: "",
       repositorio: "",
       deploy: "",
+      imagen: "",
     });
     setErrores({});
     setEditandoId(null);
@@ -134,6 +138,45 @@ function ProjectForm() {
           {errores.deploy && <span className="error">{errores.deploy}</span>}
         </div>
 
+        <div>
+          <label>Imagen del proyecto</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const archivo = e.target.files[0];
+              if (!archivo) return;
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                setForm((prev) => ({ ...prev, imagen: reader.result }));
+                setErrores((prev) => ({ ...prev, imagen: "" }));
+              };
+              reader.readAsDataURL(archivo);
+            }}
+          />
+
+          {errores.imagen && <span className="error">{errores.imagen}</span>}
+
+          {/* Preview */}
+          {form.imagen && (
+            <div style={{ marginTop: 8 }}>
+              <img
+                src={form.imagen}
+                alt="Preview proyecto"
+                style={{ width: 80, height: 80, objectFit: "cover" }}
+                onError={(e) => (e.target.style.display = "none")}
+              />
+              <button
+                type="button"
+                onClick={() => setForm((prev) => ({ ...prev, imagen: "" }))}
+                style={{ display: "block", marginTop: 4 }}
+              >
+                Quitar imagen
+              </button>
+            </div>
+          )}
+        </div>
+
         <button type="submit">
           {editandoId ? "Guardar cambios" : "Agregar proyecto"}
         </button>
@@ -152,6 +195,14 @@ function ProjectForm() {
         ) : (
           cv.proyectos.map((p) => (
             <div key={p.id} className="item-card">
+              {p.imagen && (
+                <img
+                  src={p.imagen}
+                  alt={p.nombre}
+                  style={{ width: 80, height: 80, objectFit: "cover" }}
+                  onError={(e) => (e.target.style.display = "none")}
+                />
+              )}
               <div className="item-card__info">
                 <strong>{p.nombre}</strong>
               </div>

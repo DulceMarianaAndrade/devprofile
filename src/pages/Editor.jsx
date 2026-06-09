@@ -5,6 +5,7 @@ import ProjectForm from "../components/ProjectForm";
 import EducationForm from "../components/EducationForm";
 import ExtraInfoForm from "../components/ExtraInfoForm";
 import { User, Zap, FolderOpen, GraduationCap, Globe, Trash2 } from "lucide-react";
+import { useCV } from "../context/CVContext";
 import "../styles/Editor.css";
 import Swal from "sweetalert2";
 
@@ -16,7 +17,7 @@ const secciones = [
   { id: "extra", label: "Experiencia e Idiomas", icono: Globe },
 ];
 
-// Mantenido por consistencia estructural, puedes removerlo si no segmentarás el borrado
+// Mantenido por consistencia estructural
 const STORAGE_KEYS = [
   "personal",
   "habilidades",
